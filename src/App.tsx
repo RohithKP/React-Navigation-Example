@@ -2,6 +2,7 @@ import * as React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Contact from './components/Contact';
 import Home from './components/Home';
+import NestedComponent from './components/NestedComponent';
 import './style.css';
 
 // Lazyload about
@@ -22,7 +23,10 @@ export default function App() {
         </li>
       </nav>
       <Routes>
-        <Route path="/" exact element={<Home />} />
+        <Route path="/" exact element={<Home />}>
+          <Route path="/" exact element={<div>Welcome to the Home Page</div>} />
+          <Route path="/nested" element={<NestedComponent />} />
+        </Route>
         <Route
           path="/about"
           element={
